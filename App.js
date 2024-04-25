@@ -12,7 +12,7 @@ const element = React.createElement('h1', {id: "heading", className: "info"}, 'H
 const root2 = ReactDOM.createRoot(document.getElementById("root"));
 root2.render(element)
 console.log(element) //!imp "this object is a "React Element"  at end of the day.. React element convert into html" by babel and render methods
-
+//!replace rajesh kanna by render()
 
 //3
 // <div id="parent">
