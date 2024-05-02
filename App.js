@@ -1,36 +1,123 @@
-//1
-//JavaScript
-const h1 = document.createElement('h1');
-h1.innerHTML = "Hello World From JavaScript!"
-const root = document.getElementById("root")
-root.appendChild(h1)
-console.log(h1) //!imp "JS Element" coverted into HTML by Browser
+import React from "react";
+import ReactDOM from "react-dom/client"
 
-//2
-// REACT
-const element = React.createElement('h1', {id: "heading", className: "info"}, 'Hello World From React!');
-const root2 = ReactDOM.createRoot(document.getElementById("root"));
-root2.render(element)
-console.log(element) //!imp "this object is a "React Element"  at end of the day.. React element convert into html" by babel and render methods
-//!replace rajesh kanna by render()
+//! JSX (transpiled before it reaches the JS ) - PARCEL _BABEL
+//! JSX => Babel transpiles it to React.createElement +> ReactElement-JS  +> HTMLElement(render)
 
-//3
-// <div id="parent">
-//     <div id="child">
-//     <h1> "I'm A Tag" </h1>
-//      <h2> "I'm A Tag" </h2>
-//     </div>
-// </div>
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-const parent = React.createElement('div', {id: "parent"},
-React.createElement(
-     'div', {id: "child"},
-     [
-      React.createElement('h1',{}, "I'm a tag"),
-      React.createElement('h2',{}, "I'm a tag")
-     ]
-    )
-);
-
+//*React Element
+const jsxheading = <h1 className = "kk">Hello World From React!</h1>
 const box = ReactDOM.createRoot(document.getElementById("box"));
-box.render(parent)
+box.render(jsxheading)
+
+
+const abc = (
+    <h1>
+        Namste React 😊
+    </h1>
+)
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(abc)
+
+//* END react element
+
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+//* React Component 
+//class based component
+//function component = A function that return JSX is called Functional Component in React
+
+//1
+const Heading = () => {
+    return <h1>Namste React Component ✔</h1>
+}
+
+                //or
+
+const Heading2 = () => <h1>Namste React Component2 ✔</h1>
+
+                //or
+
+const Heading3 = () => (
+    <h1>Namste React Component3 ✔</h1>
+)
+
+const com = ReactDOM.createRoot(document.getElementById("com"));
+com.render(<Heading />)
+
+//! upperCase varabile name when we create component.
+//! while render() it should be writen in <Heading /> comfort
+
+//--------------------------------------------------------------------
+//2 Component inside Component Or Component Composition
+
+const Title = () => {
+    return <h1>Namste React 🚀</h1>
+}
+
+const HeadingComponent = () => {
+    return <div>
+        <Title />
+        <h1> React functional Components...</h1>
+    </div> 
+}
+
+const com2 = ReactDOM.createRoot(document.getElementById("com2"));
+com2.render(<HeadingComponent />)
+
+
+//---------------------------------------------------------------------
+//3. JavaScript inside JSX by using {}
+// <></> Is called Recat Fragment or Fragment
+
+const JSinJsx = () => {
+    return <>
+    {console.log ("Hello Im Js in JSX ....🎉")}
+    {300 + 100}
+    <h1>{200 + 300}</h1>
+    <h1>JavaScript inside JSX by using {}</h1>
+    </>
+}
+const com3 = ReactDOM.createRoot(document.getElementById("com3"));
+com3.render(<JSinJsx />)
+
+//! Inside Curly bracket within JSX we can write JavaScript Code. { console.log("JS") }
+
+
+//---------------------------------------------------------------------
+//4. Element inside Component
+
+const elem = <h2>I'M  Element Going to Component..</h2>
+const Xyz = () => {
+    return <>
+    {elem}
+    <h1>Hello greetings for me to you  Recat elem</h1>
+    </>
+}
+const com4 = ReactDOM.createRoot(document.getElementById("com4"));
+com4.render(<Xyz />)
+
+
+//--------------------------------------------------------------------
+//5 Different Ways To Write😎
+
+const Title2 = () => {
+    return <h1>Namste🚀</h1>
+}
+
+const HeadingComponent2 = () => {
+    return <div>
+        {Title2()}
+        <Title2 />
+        <Title></Title>
+        <h1> React functional Components...</h1>
+    </div> 
+}
+
+const com5 = ReactDOM.createRoot(document.getElementById("com5"));
+com5.render(<HeadingComponent2 />)
+
+//! <Title2 /> or <Title2></Title2> or {Title()}
+
+//---------------------------------------------------------------------------
